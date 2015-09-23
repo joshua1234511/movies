@@ -54,7 +54,7 @@ while ($row = mysql_fetch_assoc($result)) {
 </select></td></tr>
 <tr><td>Zip Code</td><td><input placeholder="Zip Code" name="postal" type="number" maxlength="6" required=""/></td></tr>
 <tr><td>Email</td><td><input placeholder="Email" id="email" name="email" type="email" required="" onkeyup="verifyEmail(this.value);"/></td><td><label id="email_label"></label></td></tr>
-<tr><td>Password</td><td><input placeholder="Password" id="password" name="password" type="password" required=""/></td></tr>
+<tr><td>Password</td><td><input placeholder="Password" id="password" name="password" type="password" required="" onkeyup="checkPass1();"/></td><td><label id="message1"></label></td></tr>
 <tr><td>Confirm Password</td><td><input placeholder="Confirm Password" id="cpassword" name="cpassword" type="password" required="" onkeyup="checkPass();"/></td><td><label id="message"></label></td></tr>
 <tr><td></td><td><input type="submit" value="Register"></td></tr>
 </table>
