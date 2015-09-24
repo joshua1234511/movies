@@ -30,6 +30,11 @@ $poster = $row["poster"];
 mysql_close($link);   
 }
 else{
+	$li='log.txt';
+$actual_link = "http://.".$_SERVER[HTTP_HOST].$_SERVER[REQUEST_URI];
+$date = date_create();
+$errorlog="update on page :".$actual_link." update timeStamp: ".date_timestamp_get($date)." update page error". "\n";
+file_put_contents($li, $errorlog, FILE_APPEND | LOCK_EX);
 header('Location: '.$site); 
 }
 ?>
