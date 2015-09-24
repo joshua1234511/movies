@@ -42,7 +42,7 @@ Genre: <?php echo $row[genre] ?>&#13;
 Rating: <?php echo $row[rating] ?>&#13;
 Year: <?php echo $row[year] ?>"
 data-html="true" href="<?php echo $display ?>?image=<?php echo $row["id"] ?><?php echo $row[poster] ?>" >
-<img  src="<?php echo $site ?>thumnails/<?php echo $row["id"] ?><?php echo $row[poster] ?>"/></a>
+<img  src="<?php echo $site ?>thumnails/<?php echo $row["id"] ?><?php echo $row['poster'] ?>"/></a>
 <?php
 if($x === '1')
 {
@@ -183,6 +183,7 @@ $r=$offset1 +1;
 if($offset1<($total_pages-1)){
     ?>
 <a href='#' onclick="ajaxFunction1('<?php echo $in ?>',0,<?php echo $limit ?>,<?php echo $r ?>);">&gt;&gt;</a>
+
  <?php
 }
 ?>
