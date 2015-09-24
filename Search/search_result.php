@@ -36,13 +36,14 @@ foreach ($dbo->query($sql) as $row) {
 <div style="display:inline-block;">
 <?php
 }
-?>
+?> 
+<!-- href="<?php echo $display ?>?image=<?php echo $row["id"] ?><?php echo $row[poster] ?> -->
 <a data-title="Name: <?php echo $row[name] ?>&#13;
 Genre: <?php echo $row[genre] ?>&#13;
 Rating: <?php echo $row[rating] ?>&#13;
 Year: <?php echo $row[year] ?>"
-data-html="true" href="<?php echo $display ?>?image=<?php echo $row["id"] ?><?php echo $row[poster] ?>" >
-<img  src="<?php echo $site ?>thumnails/<?php echo $row["id"] ?><?php echo $row['poster'] ?>"/></a>
+data-html="true"  >
+<img onclick="show('display',this.id,<?php echo $x ?>);" id="<?php echo $row["id"] ?>" src="<?php echo $site ?>thumnails/<?php echo $row["id"] ?>.jpg"/></a>
 <?php
 if($x === '1')
 {

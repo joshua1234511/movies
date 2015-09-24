@@ -32,7 +32,7 @@ $fileTmpLoc = $_FILES["image"]["tmp_name"];
 $r =basename($_FILES["image"]["name"]);
 
 $rest= strtolower(strrchr($r, '.'));
-if(($rest!=='.jpg')&&($rest!=='.png')&& ($rest!=='.gif'))
+if(($rest!=='.jpg'))
 {
 header('Location: '.$error);
 }
@@ -45,7 +45,11 @@ $pathAndName1 = "../thumnails/".$maxid.$rest;
 
 list($width, $height) = getimagesize($fileTmpLoc);
 $thumb = imagecreatetruecolor(150, 150);
-        if($rest==='.jpg')
+$source = imagecreatefromjpeg($fileTmpLoc);
+        imagecopyresized($thumb, $source, 0, 0, 0, 0, 150, 150, $width, $height);
+        imagejpeg($thumb,$pathAndName1);
+        imagedestroy($thumb);
+        /*if($rest==='.jpg')
         {
         $source = imagecreatefromjpeg($fileTmpLoc);
         imagecopyresized($thumb, $source, 0, 0, 0, 0, 150, 150, $width, $height);
@@ -65,16 +69,16 @@ $thumb = imagecreatetruecolor(150, 150);
         imagecopyresized($thumb, $source, 0, 0, 0, 0, 150, 150, $width, $height);
         imagegif($thumb,$pathAndName1);
         imagedestroy($thumb);
-        }
+        }*/
 $moveResult = move_uploaded_file($fileTmpLoc, $pathAndName);
 $img_url  =$rest;
 if($id==null){
-$sql="INSERT INTO movies(name,genre,rating,year,poster)values('$name','$genre','$rating','$year','$img_url')";
+$sql="INSERT INTO movies(name,genre,rating,year)values('$name','$genre','$rating','$year')";
 
 $result = mysql_query($sql);
 }
 else{
-$sql="UPDATE movies SET name='$name', genre='$genre', rating='$rating', year='$year', poster='$img_url' where id=$id";
+$sql="UPDATE movies SET name='$name', genre='$genre', rating='$rating', year='$year' where id=$id";
 $result = mysql_query($sql);
 } 
 mysql_close($link);

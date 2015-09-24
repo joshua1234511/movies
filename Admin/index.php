@@ -1,5 +1,6 @@
 <?php
 include ("../Config/config.php");
+$x=1;
 session_start();
 if(!isset($_SESSION['username']) && empty($_SESSION['username'])) {
   header('Location: '.$login);
@@ -55,6 +56,7 @@ Size<br/><select name="size" onchange="ajaxFunction1(myForm1.movie.value,1,this.
 </nav>
 </aside>
 <section id="content" class="column-left">
+<?php include ("../Display/display.php"); ?>
 <article id="content_article" >
 <div style="display:inline-block;">
 <?php include ("../Config/cookie.php"); ?>

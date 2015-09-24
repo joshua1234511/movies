@@ -25,4 +25,13 @@ $dbo = new PDO('mysql:host=localhost;dbname='.$database, $username, $password);
 print "Error!: " . $e->getMessage() . "<br/>";
 die();
 }
+
+$sql = "SELECT MAX(id) as co FROM movies";
+$result = mysql_query($sql);
+$displaymax=0;
+if (mysql_num_rows($result) !== 0){  
+while ($row = mysql_fetch_assoc($result)) {
+$displaymax = $row['co'];
+}
+}
 ?>

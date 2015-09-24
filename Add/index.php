@@ -69,7 +69,7 @@ if(isset($_SESSION['username']) && !empty($_SESSION['username'])) { ?>
 </tr>
 <tr>
 <td>Poster</td>
-<td><input type="file" required="" name="image" id="image"  accept="image/jpeg,image/png,image/gif" /></td>
+<td><input type="file" required="" name="image" id="image"  accept="image/jpeg" /></td>
 </tr>
 <!--<tr>
 <?php

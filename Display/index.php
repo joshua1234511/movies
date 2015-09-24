@@ -9,6 +9,7 @@ $image = $_GET['image'];
 <meta charset="utf-8"/>
 <title>Movies</title>
 <link rel="stylesheet" href="../css/styles.css" type="text/css" />
+<link rel="stylesheet" href="../css/stylesDisplay.css" type="text/css" />
 <!--[if lt IE 9]>
 <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->

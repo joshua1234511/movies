@@ -1,5 +1,6 @@
 <?php
 include ("data.php");
+$x=0;
 ?>
 <!DOCTYPE html>
 <html>
@@ -55,6 +56,7 @@ Size<br/><select name="size" onchange="ajaxFunction1(myForm1.movie.value,0,this.
 </nav>
 </aside>
 <section id="content" class="column-left">
+<?php include ("Display/display.php"); ?>
 <article id="content_article">
 <?php include ("Config/cookie.php"); ?>
 <script type="text/javascript">ajaxFunction1(myForm1.movie.value,0,myForm2.size.value,<?php echo $offset ?>);</script>
