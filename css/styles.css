@@ -249,6 +249,12 @@ header h1 {
 	text-align: left;
 
 }
+header iframe#NewsWindow{
+	z-index: 100;
+	top: 2%;
+	left: 25%;
+	position: fixed;
+}
 header h1:hover { 
 -webkit-transform: rotate(-90deg);
 -moz-transform: rotate(-90deg);

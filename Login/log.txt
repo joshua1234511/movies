@@ -1,0 +1,1 @@
+Logout on page :http://.movies.sj/Login/logout.php Logout timeStamp: 1443094747 Logout done

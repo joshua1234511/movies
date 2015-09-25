@@ -25,6 +25,7 @@ include ("Config/config.php");
 <header>
 <h1><a href="#">Movies</a></h1>
 <h2>“<i>It's funny how the colors of the real world only seem really real when you watch them on a screen.</i>”</h2>
+<iframe id="NewsWindow" src="news_win.php" width="50%"  height="10%" marginwidth="0" marginheight="0" frameborder="0" scrolling="no"></iframe>
 <?php
 session_start();
 if(isset($_SESSION['username']) && !empty($_SESSION['username'])) { ?>

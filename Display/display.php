@@ -1,4 +1,6 @@
 <script type="text/javascript">
+
+
 	function show(target , src,x){
     
     document.getElementById(target).style.display = 'block';
@@ -31,10 +33,27 @@
     }
      document.getElementById('prev').name=p.toString();
       document.getElementById('next').name=n.toString();
-    }
+
+      document.onkeydown = function() {
+switch (window.event.keyCode) {
+case 37:
+show('display',p.toString(),<?php echo $x ?>);
+break;
+case 39:
+show('display',n.toString(),<?php echo $x ?>); 
+break;
+    
+
+}
+};
+}
     function hide(target){
     	document.getElementById(target).style.display = 'none';
     }
+
+
+
+
 
 </script>
 <div id="display" style="z-index:100; display:none;">
