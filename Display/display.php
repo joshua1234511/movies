@@ -46,11 +46,19 @@ break;
 
 }
 };
+
+ document.onkeyup = function() {
+switch (window.event.keyCode) {
+case 27:
+document.getElementById('display').style.display = 'none';
+break;
+}
+};
+
 }
     function hide(target){
     	document.getElementById(target).style.display = 'none';
     }
-
 
 
 

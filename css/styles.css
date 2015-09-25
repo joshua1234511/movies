@@ -116,6 +116,7 @@ a[data-title]:hover:after {
   background-image: -moz-linear-gradient(top, #eeeeee, #cccccc);
   background-image: -ms-linear-gradient(top, #eeeeee, #cccccc);
   background-image: -o-linear-gradient(top, #eeeeee, #cccccc);
+  width: inherit;
 }
 
 a#ulink,a#dlink {
@@ -247,6 +248,8 @@ header {
 }
 header h1 { 
 	text-align: left;
+	width: 10%;
+	font-size:1.5em;
 
 }
 header iframe#NewsWindow{
@@ -256,10 +259,10 @@ header iframe#NewsWindow{
 	position: fixed;
 }
 header h1:hover { 
--webkit-transform: rotate(-90deg);
--moz-transform: rotate(-90deg);
--ms-transform: rotate(-90deg);
--o-transform: rotate(-90deg);
+-webkit-transform: rotate(-180deg);
+-moz-transform: rotate(-180deg);
+-ms-transform: rotate(-180deg);
+-o-transform: rotate(-180deg);
 filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
 }
 header a#logout { 
@@ -308,6 +311,8 @@ header h2 {
 	font-weight: normal;
 	padding-bottom:0;
 	letter-spacing:0;
+	width: 20%;
+	height: inherit;
 }
 
 section#body {
@@ -316,7 +321,7 @@ section#body {
 }
 
 section#content {
-	margin-left: 310px;
+	margin-left: 25%;
 	padding: 20px;
 	background-color:transparent;
     margin-top: 8%;
@@ -333,7 +338,7 @@ section#content {
     right: auto;
 }
 aside#sidebar {
-	width:250px;
+	width:20%;
 	position: fixed;
     top: 19%;
 }
@@ -347,6 +352,7 @@ nav#mainnav li {
 	padding:0;
 	border-bottom: 1px solid #00FFFF;
 	border-top: 1px solid #00FFFF;
+	width: inherit;
 }
 nav#mainnav li.selected-item  {
 	border-bottom:none;

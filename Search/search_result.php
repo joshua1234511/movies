@@ -43,7 +43,7 @@ Genre: <?php echo $row[genre] ?>&#13;
 Rating: <?php echo $row[rating] ?>&#13;
 Year: <?php echo $row[year] ?>"
 data-html="true"  >
-<img onclick="show('display',this.id,<?php echo $x ?>);" id="<?php echo $row["id"] ?>" src="<?php echo $site ?>thumnails/<?php echo $row["id"] ?>.jpg"/></a>
+<img  onclick="show('display',this.id,<?php echo $x ?>);" id="<?php echo $row["id"] ?>" src="<?php echo $site ?>thumnails/<?php echo $row["id"] ?>.jpg"/></a>
 <?php
 if($x === '1')
 {
