@@ -5,4 +5,3 @@ $offset=0;
 } else {
 $offset= $_COOKIE["page"];
 }
-?>

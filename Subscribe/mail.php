@@ -11,4 +11,3 @@ mail($to,$subject,$txt,$headers);
 }
 }
 echo "<script>window.close();</script>";
-?>

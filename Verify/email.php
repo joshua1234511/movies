@@ -15,4 +15,3 @@ echo "Email Valid";
 else{
 echo "Invalid Email";
 }
-?>

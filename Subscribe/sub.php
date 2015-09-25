@@ -10,4 +10,3 @@ header('Location: '.$site);
 else{
 header('Location: '.$error); 
 }
-?>
