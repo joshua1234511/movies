@@ -1,6 +1,7 @@
 <script type="text/javascript">
 function show(target , src,x){
 document.getElementById(target).style.display = 'block';
+document.getElementById('content_article').style.display = 'none';
 if(parseInt(x)==1){
 document.getElementById('displayImg').src="../images/" + src + ".jpg";
 }
@@ -42,12 +43,14 @@ document.onkeyup = function() {
 switch (window.event.keyCode) {
 case 27:
 document.getElementById('display').style.display = 'none';
+document.getElementById('content_article').style.display = 'block';
 break;
 }
 };
 }
 function hide(target){
 document.getElementById(target).style.display = 'none';
+document.getElementById('content_article').style.display = 'block';
 }
 </script>
 <div id="display" style="z-index:100; display:none;">
