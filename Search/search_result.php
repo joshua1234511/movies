@@ -42,7 +42,7 @@ data-html="true"  >
 if($x === '1'){
 ?> 
 <br /><center>
-<div  style="display:inline;"><form method="POST" action="<?php echo $site ?>Delete/"  style="display:inline-block;">
+<div style="display:inline-block;"><form method="POST" action="<?php echo $site ?>Delete/"  style="display:inline-block;">
 <input type="hidden" value="<?php echo $row["id"] ?>" name="id"/>
 <input type="submit" value="Delete" onclick="return confirm('Are you sure?')" />
 </form>

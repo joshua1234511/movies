@@ -40,14 +40,17 @@ if(isset($_SESSION['username']) && !empty($_SESSION['username'])) { ?>
 if(($site === $actual_link )|| ($admin ===$actual_link)){
 ?>
 <form id="myForm1">
-Enter Movie Details<br/><input placeholder="Name/ID/Year" name="movie" type="text" onkeyup="search1(this.value,0,myForm2.size.value);"/>
+Enter Movie Details<br/><input placeholder="Name/ID/Year" name="movie" type="text" onkeyup="search1(this.value,<?php echo $x ; ?>,myForm2.size.value);"/>
 </form>
 <form id="myForm2">
-Size<br/><select name="size" onchange="search1(myForm1.movie.value,0,this.value);" >
+Size<br/><select name="size" onchange="search1(myForm1.movie.value,<?php echo $x ; ?>,this.value);" >
 <option value="3">Default</option>
 <option value="6">6</option>
 <option value="12">12</option>
+<?php 
+if($site === $actual_link ) { ?>
 <option value="18">18</option>
+<?php } ?>
 </select>
 </form>
 <?php
