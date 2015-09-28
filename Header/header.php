@@ -59,8 +59,12 @@ Size<br/><select name="size" onchange="search1(myForm1.movie.value,0,this.value)
 <ul>
 <li <?php if($site === $actual_link) {?> class="selected-item" <?php } ?>><a href="<?php echo $site ?>">Home</a></li>
 <li <?php if($admin === $actual_link) {?> class="selected-item" <?php } ?>><a href="<?php echo $admin ?>">Admin</a></li>
+<?php if(isset($_SESSION['username']) && !empty($_SESSION['username'])) { ?>
+<li <?php if($add === $actual_link) {?> class="selected-item" <?php } ?>><a href="<?php echo $add ?>">Add</a></li>
+<?php } ?>
 <li <?php if($Subscribe === $actual_link) {?> class="selected-item" <?php } ?>><a href="<?php echo $Subscribe ?>" >Subscribe</a></li>
 <li <?php if($blog === $actual_link) {?> class="selected-item" <?php } ?>><a href="<?php echo $blog ?>" >Blog</a></li>
+<li <?php if($slider === $actual_link) {?> class="selected-item" <?php } ?>><a href="<?php echo $slider ?>" >Slider</a></li>
 <li>
 <?php 
 if($site === $actual_link){

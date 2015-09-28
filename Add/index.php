@@ -42,9 +42,13 @@ include ("../Header/header.php"); ?>
 </tr>
 <tr><td>
 <a href="javascript:void(0);" onclick="generate_captcha();" title="Refresh Captcha Image">Reload Image</a>
-</td></tr>
-<tr><td></td><td><input type="submit" value="Submit" class="btn" onClick="return validate_captcha()" /></td></tr>
-</table></form>
+</td><td><input type="submit" value="Submit" class="btn" onClick="return validate_captcha()" /></td></tr>
+</form>
+<tr><td><br/></td></tr><tr><td><br/></td></tr>
+<form action="<?php echo $site ?>Edit/csv.php" method="post" enctype="multipart/form-data">
+<tr><td>Csv Upload</td><td><input type="file" required name="filename" id="filename"  accept=".csv" /></td><td><input type="submit" value="Submit" class="btn" /></td></tr>
+</form>
+</table>
 </center>
 </article>
 </section>

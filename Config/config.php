@@ -5,6 +5,7 @@ define('USERNAME', 'root');
 define('PASSWORD', '');
 $site="http://movies.sj/";
 $admin=$site."Admin/";
+$add=$site."Add/";
 $error=$site."Error/";
 $display=$site."Display/";
 $Subscribe=$site."Subscribe/";
@@ -12,6 +13,7 @@ $login=$site."Login/";
 $logout=$site."Login/logout.php";
 $register=$site."Register/";
 $blog=$site."blog/";
+$slider=$site."Slider/";
 $link = mysql_connect(HOSTNAME, USERNAME, PASSWORD);
 if (!$link) {
 die('Connection failed: ' . mysql_error());
