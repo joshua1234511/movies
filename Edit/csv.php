@@ -13,7 +13,7 @@ mysql_query($import) or die(header('Location: '.$error));
 fclose($handle);
 mysql_close($link);
 if($import){
-echo "<script type='text/javascript'>window.open('http://movies.sj/','_self');window.open('http://movies.sj/Subscribe/mail.php');</script>";
+echo "<script type='text/javascript'>window.open('".$site."','_self');window.open('".$Subscribe."mail.php');</script>";
 }
 else{
 $li='log.txt';

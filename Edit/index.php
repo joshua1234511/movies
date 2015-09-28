@@ -24,8 +24,7 @@ $errorlog="Error on page :".$actual_link." Error timeStamp: ".date_timestamp_get
 file_put_contents($li, $errorlog, FILE_APPEND | LOCK_EX);
 header('Location: '.$error);
 }
-else
-{
+else{
 $pathAndName = "../images/".$maxid.$rest;
 $pathAndName1 = "../thumnails/".$maxid.$rest;
 list($width, $height) = getimagesize($fileTmpLoc);
@@ -56,7 +55,7 @@ $result = mysql_query($sql);
 } 
 mysql_close($link);
 if($result){
-echo "<script type='text/javascript'>window.open('http://movies.sj/','_self');window.open('http://movies.sj/Subscribe/mail.php');</script>";
+echo "<script type='text/javascript'>window.open('".$site."','_self');window.open('".$Subscribe."mail.php');</script>";
 }
 else{
 $li='log.txt';

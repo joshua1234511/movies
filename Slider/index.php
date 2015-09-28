@@ -22,12 +22,17 @@ val++;
 }
 else{
 val --;
-    }
+}
 if(val > 0 && val < 100){
 el.style.opacity = val / 100;
 setTimeout(function(){fadeImg(el, val, fade);}, 10);
 }
 }
+function bubble(y){
+x = y;
+clearTimeout(timer);
+changeImage();
+} 
 function next(){
 x++;
 if(x >= images.length){
@@ -52,17 +57,22 @@ foreach ($dbo->query($sql) as $row) { ?>
 images[++x] = "<?php echo $site ?>images/<?php echo $row["id"] ?>.jpg";
 <?php	}
 ?>
-setTimeout("changeImage()", 6000);
+setTimeout("changeImage()", 2000);
 </script>
 <a  onclick="prev();" id="prev" name="" style="left: 26%;
 top:52%; position: absolute;z-index: 30;background-color:red;">&lt;&lt;</a>
-<img id="slider" src="http://movies.sj/images/slider.jpg" style="height:70%; width:70%;
+<img id="slider" src="<?php echo $site ?>images/slider.jpg" style="height:70%; width:70%;
 padding: 4px 8px;
 color: #333;
 position: absolute;
 left: 23%;
 top:20%;
 z-index: 20;" alt="Loading">
+<a onclick="bubble(0);"style="left: 56%;top:84%; position: absolute;z-index: 30;">O</a>
+<a onclick="bubble(1);"style="left: 57%;top:84%; position: absolute;z-index: 30;">O</a>
+<a onclick="bubble(2);"style="left: 58%;top:84%; position: absolute;z-index: 30;">O</a>
+<a onclick="bubble(3);"style="left: 59%;top:84%; position: absolute;z-index: 30;">O</a>
+<a onclick="bubble(4);"style="left: 60%;top:84%; position: absolute;z-index: 30;">O</a>
 <a onclick="next();"  id="next" name="" style="left: 90%;
 top:52%; position: absolute;z-index: 30;background-color:red;">&gt;&gt;</a>
 </article>
