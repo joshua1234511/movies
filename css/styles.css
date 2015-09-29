@@ -1,3 +1,83 @@
+@media screen and (max-width : 960px){
+nav#smallnav{
+	display: block;
+}	
+header h2 {
+display: none;
+}
+nav#mainnav li.social {
+display: none;
+}
+header {
+    height: 10%;
+}
+aside#sidebar {
+	width:20%;
+	position: fixed;
+    top: 21%;
+}
+}
+@media screen and (max-width : 760px){
+
+img#displayImg{
+	height:50%; width:70%
+}
+aside#sidebar {
+	display: none;
+}
+a[data-title]:hover:after {
+	display: none;
+}
+nav#mainnav li.social {
+display: none;
+}
+header iframe#NewsWindow{
+display: none;
+}
+nav#smallnav{
+	display: block;
+}
+nav#smallnav ul{
+	position: fixed;
+    top: 30%;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+nav#smallnav ul li { display: block; }
+header h2 {
+display: none;
+}
+header a#logout { 
+	text-align: left;
+	top:5%;
+	right: 8%;
+	position: fixed;
+	color: #fff;
+	font-size: .7em;
+}
+header label#name { 
+	text-align: left;
+	top:2%;
+	right: 5%;
+	position: fixed;
+	color: #fff;
+    font-size: .7em;
+}
+
+header form#myForm1 { 
+	 font-size: .7em;
+	 width:auto;
+}
+header form#myForm2 { 
+	 font-size: .7em;
+	 width:auto;
+}
+header h1 a.movies{ 
+	font-size: .9em;
+}
+
+}
 /* vietnamese */
 @font-face {
   font-family: 'Source Sans Pro';
@@ -244,7 +324,7 @@ header {
 	background: blue;
 	width: 100%;
     position:fixed;
-    height: 13%;
+    height: 12%;
 }
 header h1 { 
 	text-align: left;
@@ -347,7 +427,9 @@ nav#mainnav ul {
 	margin: 0;
 	list-style: none;
 }
-
+nav#smallnav{
+display: none;
+}
 nav#mainnav li {
 	padding:0;
 	border-bottom: 1px solid #00FFFF;
@@ -377,7 +459,6 @@ nav#mainnav li a {
 	font-weight:  bold;
 	text-decoration: none;
 }
-
 
 
 

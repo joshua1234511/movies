@@ -29,9 +29,9 @@ include ("../Social/facebook_script.php");
 <body>
 <section id="body" class="width">
 <header>
-<h1><a href="#">Movies</a></h1>
+<h1><a class="movies" href="#">Movies</a></h1>
 <h2>“<i>It's funny how the colors of the real world only seem really real when you watch them on a screen.</i>”</h2>
-<iframe id="NewsWindow" src="<?php echo $src ; ?>" width="50%"  height="10%" marginwidth="0" marginheight="0" frameborder="0" scrolling="no"></iframe>
+<iframe id="NewsWindow" src="<?php echo $src ; ?>" width="40%"  height="10%" marginwidth="0" marginheight="0" frameborder="0" scrolling="no"></iframe>
 <?php
 session_start();
 if(isset($_SESSION['username']) && !empty($_SESSION['username'])) { ?>
@@ -57,6 +57,18 @@ if($site === $actual_link ) { ?>
 }
 ?>
 </header>
+<nav id="smallnav">
+<ul >
+<li <?php if($site === $actual_link) {?> class="selected-item" <?php } ?>><a href="<?php echo $site ?>">Home</a></li>
+<li <?php if($admin === $actual_link) {?> class="selected-item" <?php } ?>><a href="<?php echo $admin ?>">Admin</a></li>
+<?php if(isset($_SESSION['username']) && !empty($_SESSION['username'])) { ?>
+<li <?php if($add === $actual_link) {?> class="selected-item" <?php } ?>><a href="<?php echo $add ?>">Add</a></li>
+<?php } ?>
+<li <?php if($Subscribe === $actual_link) {?> class="selected-item" <?php } ?>><a href="<?php echo $Subscribe ?>" >Subscribe</a></li>
+<li <?php if($blog === $actual_link) {?> class="selected-item" <?php } ?>><a href="<?php echo $blog ?>" >Blog</a></li>
+<li <?php if($slider === $actual_link) {?> class="selected-item" <?php } ?>><a href="<?php echo $slider ?>" >Slider</a></li>
+</ul>
+</nav>
 <aside id="sidebar" class="column-left">
 <nav id="mainnav">
 <ul>
@@ -68,7 +80,7 @@ if($site === $actual_link ) { ?>
 <li <?php if($Subscribe === $actual_link) {?> class="selected-item" <?php } ?>><a href="<?php echo $Subscribe ?>" >Subscribe</a></li>
 <li <?php if($blog === $actual_link) {?> class="selected-item" <?php } ?>><a href="<?php echo $blog ?>" >Blog</a></li>
 <li <?php if($slider === $actual_link) {?> class="selected-item" <?php } ?>><a href="<?php echo $slider ?>" >Slider</a></li>
-<li>
+<li class="social">
 <?php 
 if($site === $actual_link){
 include ("Social/facebook.php");
