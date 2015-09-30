@@ -25,6 +25,9 @@ $sql="SELECT * FROM movies where name like '%$in%' OR year like '%$in%' OR id li
 $cookie_name = "page";
 $cookie_value = $offset1;
 setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day
+$cookie_name = "limit";
+$cookie_value = $limit;
+setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day
 foreach ($dbo->query($sql) as $row) {
 if($x === '1'){
 ?>

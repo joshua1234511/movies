@@ -13,6 +13,7 @@ include ("Social/facebook_script.php");
 ?>
 <link rel="stylesheet" href="css/styles.css" type="text/css" />
 <script type="text/javascript" src="js/functions.js"></script>
+<?php include ("Config/cookie.php"); ?>
 <?php
 }
 else {
@@ -21,6 +22,7 @@ include ("../Social/facebook_script.php");
 ?>
 <link rel="stylesheet" href="../css/styles.css" type="text/css" />
 <script type="text/javascript" src="../js/functions.js"></script>
+<?php include ("../Config/cookie.php"); ?>
 <?php
 }
 ?>
@@ -44,12 +46,12 @@ Enter Movie Details<br/><input placeholder="Name/ID/Year" name="movie" type="tex
 </form>
 <form id="myForm2">
 Size<br/><select name="size" onchange="search1(myForm1.movie.value,<?php echo $x ; ?>,this.value);" >
-<option value="3">Default</option>
-<option value="6">6</option>
-<option value="12">12</option>
+<option <?php if($limit === '3') {?> selected="selected"  <?php } ?> value="3">Default</option>
+<option <?php if($limit === '6') {?> selected="selected"  <?php } ?> value="6">6</option>
+<option <?php if($limit === '12') {?> selected="selected"  <?php } ?> value="12">12</option>
 <?php 
 if($site === $actual_link ) { ?>
-<option value="18">18</option>
+<option <?php if($limit === '18') {?> selected="selected"  <?php } ?> value="18">18</option>
 <?php } ?>
 </select>
 </form>
