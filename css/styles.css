@@ -129,7 +129,7 @@ header h1 a.movies{
 body {
 	margin:0px auto;
 	padding:0;
-	background:-webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#999999));
+	background-color:-webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#999999));
 	font-family: "Source Sans Pro","sans-serif";
 	font-size: 1.0em;
 	color:#666;
@@ -521,7 +521,6 @@ footer p a {
 }
 footer p a:hover { color:#333; border-bottom-color: #333; }
 
-
 /** clear fix **/
 .clear:after {
 	display: block;
@@ -564,10 +563,18 @@ footer p a:hover { color:#333; border-bottom-color: #333; }
 	text-align: center;
 }
 .w20{
-	width: 18%;
+	width: 19.5%;
+	margin-top: 25px;
 }
 .w30{
 	width: 31.333%;
+}
+.w25{
+	width: 23%;
+}
+.w15{
+	width: 14%;
+	margin-top: 40px;
 }
 .content{
 	background: -webkit-gradient(linear, left top, left bottom, from(#999999), to(#ffffff));
@@ -581,4 +588,5 @@ footer p a:hover { color:#333; border-bottom-color: #333; }
 }
 .row img{
 	width: 100%;
+	z-index: 20;
 }

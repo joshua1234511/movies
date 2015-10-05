@@ -90,8 +90,8 @@ clearTimeout(timer);
 			<div class="left w20"><img src="" id="1"></div>
 			<div class="left w20"><img src="" id="2"></div>
 			<div class="left w20"><img src="" id="3"></div>
-			<div class="right w20"><img src="" id="4"></div>
 			<div class="right w20"><img src="" id="5"></div>
+			<div class="right w20"><img src="" id="4"></div>
 		</div>
 
 

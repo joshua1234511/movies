@@ -33,7 +33,7 @@ include ("../Social/facebook_script.php");
 <header>
 <h1><a class="movies" href="#">Movies</a></h1>
 <h2>“<i>It's funny how the colors of the real world only seem really real when you watch them on a screen.</i>”</h2>
-<iframe id="NewsWindow" src="<?php echo $src ; ?>" width="40%"  height="10%" marginwidth="0" marginheight="0" frameborder="0" scrolling="no"></iframe>
+<!-- <iframe id="NewsWindow" src="<?php echo $src ; ?>" width="40%"  height="10%" marginwidth="0" marginheight="0" frameborder="0" scrolling="no"></iframe> -->
 <?php
 session_start();
 if(isset($_SESSION['username']) && !empty($_SESSION['username'])) { ?>

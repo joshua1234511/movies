@@ -65,6 +65,8 @@ $sql =" SELECT * FROM movies where name like '%$in%' OR year like '%$in%' OR id 
 $rs_result = mysql_query($sql); 
 $total_records = mysql_num_rows($rs_result); 
 $total_pages = ceil($total_records / $limit)*1; 
+if($total_records!==0)
+{
 ?>
 <br/>
 <?php
@@ -115,6 +117,7 @@ if($offset1<($total_pages-1)){
 }
 ?>
 <?php
+}
 }
 mysql_close($link);
 ?>
