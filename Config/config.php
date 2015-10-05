@@ -14,6 +14,7 @@ $logout=$site."Login/logout.php";
 $register=$site."Register/";
 $blog=$site."blog/";
 $slider=$site."Slider/";
+$displaySingle=$site."Display.php";
 $link = mysql_connect(HOSTNAME, USERNAME, PASSWORD);
 if (!$link) {
 die('Connection failed: ' . mysql_error());

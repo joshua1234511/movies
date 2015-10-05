@@ -32,6 +32,20 @@ include ("../Header/header.php"); ?>
 <td>Year</td>
 <td><input id="year"  name="year" type="date" required value="" /></td>
 </tr>
+
+<tr><td>Location</td><td> <select id="country" name="country">
+<?php $sql = "SELECT id, name FROM location";
+$result = mysql_query($sql);
+if (mysql_num_rows($result) !== 0){
+while ($row = mysql_fetch_assoc($result)) {
+?>  
+<option value="<?php echo $row['id']; ?>"><?php echo $row['name']; ?></option>
+<?php
+}
+}
+?>
+</select></td></tr>
+
 <tr>
 <td>Poster</td>
 <td><input type="file" required name="image" id="image"  accept="image/jpeg" /></td>

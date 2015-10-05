@@ -8,20 +8,20 @@
 <?php
 $actual_link = "http://".$_SERVER[HTTP_HOST].$_SERVER[REQUEST_URI];
 if($site === $actual_link){
-$src="news_win.php";
 include ("Social/facebook_script.php");
 ?>
 <link rel="stylesheet" href="css/styles.css" type="text/css" />
 <script type="text/javascript" src="js/functions.js"></script>
+<script type="text/javascript" src="js/functions_pop.js"></script>
 <?php include ("Config/cookie.php"); ?>
 <?php
 }
 else {
-$src="../news_win.php";
 include ("../Social/facebook_script.php");
 ?>
 <link rel="stylesheet" href="../css/styles.css" type="text/css" />
 <script type="text/javascript" src="../js/functions.js"></script>
+<script type="text/javascript" src="../js/functions_pop.js"></script>
 <?php include ("../Config/cookie.php"); ?>
 <?php
 }
@@ -83,14 +83,14 @@ if($site === $actual_link ) { ?>
 <li <?php if($blog === $actual_link) {?> class="selected-item" <?php } ?>><a href="<?php echo $blog ?>" >Blog</a></li>
 <li <?php if($slider === $actual_link) {?> class="selected-item" <?php } ?>><a href="<?php echo $slider ?>" >Slider</a></li>
 <li class="social">
-<?php 
+<!--<?php 
 if($site === $actual_link){
 include ("Social/facebook.php");
 }
 else{
 include ("../Social/facebook.php");
 }
-?>
+?>-->
 </li>
 </ul>
 </nav>

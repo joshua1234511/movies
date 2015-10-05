@@ -16,6 +16,10 @@ $email=$_POST['email'];
 $password=md5($_POST['password']);
 $sql="INSERT INTO user(fname,lname,gender,birthday,country,postal,email,password)values('$fname','$lname','$gender','$birthday', '$country','$postal', '$email', '$password')";
 $result = mysql_query($sql);
+$to = $email;
+$subject = "Sign Up";
+$txt = "Registration sucessfull";
+mail($to,$subject,$txt,$headers);
 if($result){
 header('Location: '.$login); 
 }

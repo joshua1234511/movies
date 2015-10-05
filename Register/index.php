@@ -2,6 +2,8 @@
 include ("../Config/config.php");
 ?>
 <?php include ("../Header/header.php"); ?>
+<script type="text/javascript" src="../js/verifyEmail.js"></script>
+<script type="text/javascript" src="../js/verifyPassword.js"></script>
 <section id="content" class="column-left">
 <article id="content_article">
 <br/>

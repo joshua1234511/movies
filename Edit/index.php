@@ -12,6 +12,7 @@ $genre=test_input($_POST['genre']);
 $rating=test_input($_POST['rating']);
 $year=test_input($_POST['year']);
 $id=test_input($_POST['id']);
+$address=$_POST['country'];
 if(is_uploaded_file($_FILES['image']['tmp_name'])){  
 $fileTmpLoc = $_FILES["image"]["tmp_name"];
 $r =basename($_FILES["image"]["name"]);
@@ -36,7 +37,7 @@ imagedestroy($thumb);
 $moveResult = move_uploaded_file($fileTmpLoc, $pathAndName);
 $img_url  =$rest;
 if($id==null){
-$sql="INSERT INTO movies(name,genre,rating,year)values('$name','$genre','$rating','$year')";
+$sql="INSERT INTO movies(name,genre,rating,year,address)values('$name','$genre','$rating','$year','$address')";
 $li='log.txt';
 $actual_link = "http://.".$_SERVER[HTTP_HOST].$_SERVER[REQUEST_URI];
 $date = date_create();
@@ -45,7 +46,7 @@ file_put_contents($li, $errorlog, FILE_APPEND | LOCK_EX);
 $result = mysql_query($sql);
 }
 else{
-$sql="UPDATE movies SET name='$name', genre='$genre', rating='$rating', year='$year' where id=$id";
+$sql="UPDATE movies SET name='$name', genre='$genre', rating='$rating', year='$year', address='$address' where id=$id";
 $li='log.txt';
 $actual_link = "http://.".$_SERVER[HTTP_HOST].$_SERVER[REQUEST_URI];
 $date = date_create();

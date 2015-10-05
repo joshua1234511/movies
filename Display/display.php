@@ -2,12 +2,14 @@
 function show(target , src,x){
 document.getElementById(target).style.display = 'block';
 document.getElementById('content_article').style.display = 'none';
+document.getElementById('row').style.display = 'none';
 if(parseInt(x)==1){
 document.getElementById('displayImg').src="../images/" + src + ".jpg";
 }
 else {
 document.getElementById('displayImg').src="images/" + src + ".jpg";
 }
+document.getElementById('id1').value=src.toString();
 var n=parseInt(src) +1;
 var p=parseInt(src) -1;
 if(p == 0){
@@ -44,13 +46,17 @@ switch (window.event.keyCode) {
 case 27:
 document.getElementById('display').style.display = 'none';
 document.getElementById('content_article').style.display = 'block';
+document.getElementById('row').style.display = 'inline-block';
 break;
 }
 };
+
+search2(src);
 }
 function hide(target){
 document.getElementById(target).style.display = 'none';
 document.getElementById('content_article').style.display = 'block';
+document.getElementById('row').style.display = 'inline-block';
 }
 </script>
 <div id="display" style="z-index:100; display:none;">
@@ -66,6 +72,19 @@ position: absolute;
 left: 23%;
 top:20%;
 z-index: 20;">
+<style type="text/css">div#id1 p{
+	background: #ffffff;
+	display: table;
+	}</style>
+<div id="id1" name="" style="height:60%; width:50%;
+padding: 4px 8px;
+color: black;
+position: absolute;
+left: 30%;
+top:52%;
+opacity:4;
+z-index: 21;">
+</div>
 <a onclick="show('display',this.name,<?php echo $x ?>);" onmouseover="show('display',this.name,<?php echo $x ?>);" id="next" name="" style="left: 90%;
 top:52%; position: absolute;z-index: 30;background-color:red;">&gt;&gt;</a>
 </div>

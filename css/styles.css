@@ -320,6 +320,7 @@ div#wrapper {
 
 
 header {
+	top: 0;
 	padding:20px 17px 20px 17px;
 	margin:0 auto;
 	background: blue;
