@@ -22,10 +22,16 @@ $genre = $row["genre"];
 $rating = $row["rating"];
 $year = $row["year"];
 $poster = $row["poster"]; 
-$country=$row["address"];
 }
 }
    
+}
+
+$sql = mysql_query("select location_id from movies_running where movies_id= $id ");
+$userinfo = array();
+
+while ($row_user = mysql_fetch_assoc($sql)){
+    $userinfo[] = $row_user['location_id'];
 }
 ?>
 <?php include ("../Header/header.php"); ?>
@@ -60,13 +66,13 @@ $country=$row["address"];
 <td><input id="year"  name="year" type="date" required  value="<?php echo $year ?>"/></td>
 </tr>
 
-<tr><td>Location</td><td> <select id="country" name="country">
+<tr><td>Location</td><td> <select id="country" name="country[]" multiple>
 <?php $sql1 = "SELECT id, name FROM location";
 $result1 = mysql_query($sql1);
 if (mysql_num_rows($result1) !== 0){
 while ($row1 = mysql_fetch_assoc($result1)) {
 ?>  
-<option value="<?php echo $row1['id']; ?>"   <?php if($country ===$row1['id']){?>selected=""<?php }?>   > <?php echo $row1['name']; ?></option>
+<option value="<?php echo $row1['id']; ?>"   <?php if (in_array($row1['id'], $userinfo)){?>selected=""<?php }?>   > <?php echo $row1['name']; ?></option>
 <?php
 }
 }

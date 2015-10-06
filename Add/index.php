@@ -33,7 +33,7 @@ include ("../Header/header.php"); ?>
 <td><input id="year"  name="year" type="date" required value="" /></td>
 </tr>
 
-<tr><td>Location</td><td> <select id="country" name="country">
+<tr><td>Location</td><td> <select id="country" name="country[]" multiple>
 <?php $sql = "SELECT id, name FROM location";
 $result = mysql_query($sql);
 if (mysql_num_rows($result) !== 0){
