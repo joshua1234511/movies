@@ -63,7 +63,7 @@ $lt = $row1['lt'];
 function initMap() {
 
   var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 12
+    zoom: 10
   });
 
 
@@ -73,12 +73,13 @@ if(!!navigator.geolocation) {
           
             var geolocate = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 
-            var infowindow = new google.maps.InfoWindow({
-                map: map,
-                position: geolocate,
-                content:
-                    '<h4>Your Current Geolocation!</h4>'
-            });
+            
+
+var marker1 = new google.maps.Marker({
+    position: {lat: position.coords.latitude, lng: position.coords.longitude},
+    map: map,
+    icon: 'blue_dot_mylocation.gif'
+  });
             map.setCenter(geolocate);
             
           });
