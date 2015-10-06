@@ -1,6 +1,21 @@
 <?php   
 include ("../Config/config.php");
 $id=test_input($_POST['id']);
+$sql = "SELECT MAX(id) as co FROM movies";
+$result = mysql_query($sql);
+$maxid=1;
+if (mysql_num_rows($result) !== 0){  
+while ($row = mysql_fetch_assoc($result)) {
+$maxid = $row['co'] + 1;
+}
+}
+else{
+$maxid = 1;
+}
+if($id!=='')
+{
+$maxid =$id;
+}
 function test_input($data) {
 $data = trim($data);
 $data = stripslashes($data);
