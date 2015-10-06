@@ -45,6 +45,7 @@ z-index: 20;">
   <p> Genre: <?php echo $row['genre'] ?></p>
    <p>Rating: <?php echo $row['rating'] ?></p>
    <p>Year: <?php echo $row['year'] ?></p>
+   Set Radius (Kms)<input type="number" onkeyup="initMap(this.value);" placeholder="15">
 </div>
 
 <?php
@@ -59,9 +60,13 @@ $lt = $row1['lt'];
 <script>
 
 
+function initMap(x) {
+  if(!x){
+x=15;
+  }
 
-function initMap() {
-
+  var lati;
+  var lon;
   var map = new google.maps.Map(document.getElementById('map'), {
     zoom: 10
   });
@@ -72,18 +77,13 @@ if(!!navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(function(position) {
           
             var geolocate = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-
-            
-
 var marker1 = new google.maps.Marker({
     position: {lat: position.coords.latitude, lng: position.coords.longitude},
     map: map,
     icon: 'blue_dot_mylocation.gif'
   });
             map.setCenter(geolocate);
-            
           });
-
         } 
 
   var layer = new google.maps.visualization.DynamicMapsEngineLayer({
@@ -102,7 +102,6 @@ var marker1 = new google.maps.Marker({
   layer.addListener('mouseout', function(event) {
     layer.getFeatureStyle(event.featureId).resetAll();
   });
-
 <?php
 $sql1="select location_id  from movies_running where movies_id =  $id ";
 foreach ($dbo->query($sql1) as $row1) {
@@ -110,10 +109,59 @@ $loc1=$row1['location_id'];
 $sql11="select * from location where id =  $loc1 LIMIT 1";
 foreach ($dbo->query($sql11) as $row11) {
  ?>
- var marker = new google.maps.Marker({
+
+
+
+
+
+
+if(!!navigator.geolocation) {
+        
+          navigator.geolocation.getCurrentPosition(function(position) {
+          
+            
+         dis=  distance(position.coords.latitude,  position.coords.longitude
+, <?php echo  $row11['lt'] ?>, <?php echo $row11['ln'] ?>,'K');
+            
+           if(dis<x)
+           {
+
+             var marker = new google.maps.Marker({
     position: {lat: <?php echo  $row11['lt'] ?>, lng: <?php echo $row11['ln'] ?>},
     map: map
   });
+
+           }
+            
+          });
+        } 
+
+function distance(lat1, lon1, lat2, lon2, unit) {
+  var radlat1 = Math.PI * lat1/180
+  var radlat2 = Math.PI * lat2/180
+  var radlon1 = Math.PI * lon1/180
+  var radlon2 = Math.PI * lon2/180
+  var theta = lon1-lon2
+  var radtheta = Math.PI * theta/180
+  var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+  dist = Math.acos(dist)
+  dist = dist * 180/Math.PI
+  dist = dist * 60 * 1.1515
+  if (unit=="K") { dist = dist * 1.609344 }
+  if (unit=="N") { dist = dist * 0.8684 }
+  return dist
+}
+
+
+
+
+
+
+
+
+
+
+
 <?php }
 }
 ?>
