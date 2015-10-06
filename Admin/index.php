@@ -1,6 +1,6 @@
 <?php
-include ("../Config/config.php");
 $x=1;
+include ("../Config/config.php");
 session_start();
 if(!isset($_SESSION['username']) && empty($_SESSION['username'])) {
 header('Location: '.$login);

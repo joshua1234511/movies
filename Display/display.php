@@ -2,12 +2,13 @@
 function show(target , src,x){
 document.getElementById(target).style.display = 'block';
 document.getElementById('content_article').style.display = 'none';
-document.getElementById('row').style.display = 'none';
 if(parseInt(x)==1){
 document.getElementById('displayImg').src="../images/" + src + ".jpg";
+
 }
 else {
 document.getElementById('displayImg').src="images/" + src + ".jpg";
+document.getElementById('row').style.display = 'none';
 }
 document.getElementById('id1').value=src.toString();
 var n=parseInt(src) +1;
@@ -46,7 +47,9 @@ switch (window.event.keyCode) {
 case 27:
 document.getElementById('display').style.display = 'none';
 document.getElementById('content_article').style.display = 'block';
+if(parseInt(x)==0){
 document.getElementById('row').style.display = 'inline-block';
+}
 break;
 }
 };
@@ -56,7 +59,9 @@ search2(src);
 function hide(target){
 document.getElementById(target).style.display = 'none';
 document.getElementById('content_article').style.display = 'block';
+if(parseInt(x)==0){
 document.getElementById('row').style.display = 'inline-block';
+}
 }
 </script>
 <div id="display" style="z-index:100; display:none;">

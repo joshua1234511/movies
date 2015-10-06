@@ -21,7 +21,7 @@ include ("Header/header.php"); ?>
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
   })();
 </script>
-
+<script src="//maps.googleapis.com/maps/api/js?v=3.exp&sensor=true"></script>
 
 
 <article id="content_article" >
@@ -57,11 +57,33 @@ $lt = $row1['lt'];
 
 ?>
 <script>
+
+
+
 function initMap() {
+
   var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 14,
-    center: {lat: <?php echo $lt ?>, lng: <?php echo $ln ?>}
+    zoom: 12
   });
+
+
+if(!!navigator.geolocation) {
+        
+          navigator.geolocation.getCurrentPosition(function(position) {
+          
+            var geolocate = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+
+            var infowindow = new google.maps.InfoWindow({
+                map: map,
+                position: geolocate,
+                content:
+                    '<h4>Your Current Geolocation!</h4>'
+            });
+            map.setCenter(geolocate);
+            
+          });
+
+        } 
 
   var layer = new google.maps.visualization.DynamicMapsEngineLayer({
     layerId: '06673056454046135537-08896501997766553811',
@@ -80,17 +102,30 @@ function initMap() {
     layer.getFeatureStyle(event.featureId).resetAll();
   });
 
-  var marker = new google.maps.Marker({
-    position: {lat: <?php echo $lt ?>, lng: <?php echo $ln ?>},
+<?php
+$sql1="select location_id  from movies_running where movies_id =  $id ";
+foreach ($dbo->query($sql1) as $row1) {
+$loc1=$row1['location_id'];
+$sql11="select * from location where id =  $loc1 LIMIT 1";
+foreach ($dbo->query($sql11) as $row11) {
+ ?>
+ var marker = new google.maps.Marker({
+    position: {lat: <?php echo  $row11['lt'] ?>, lng: <?php echo $row11['ln'] ?>},
     map: map
   });
+<?php }
 }
+?>
 
+
+ 
+  
+}
 var colors = ['red', 'blue', 'yellow', 'green'];
 
     </script>
     <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=&signed_in=true&libraries=visualization&callback=initMap">
+        src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true&libraries=visualization&callback=initMap">
     </script>
 
 
