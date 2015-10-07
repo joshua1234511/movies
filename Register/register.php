@@ -16,7 +16,8 @@ $country=$_POST['country'];
 $postal=$_POST['postal'];
 $email1=$_POST['email'];
 $password=md5($_POST['password']);
-$sql="INSERT INTO user(fname,lname,gender,birthday,country,postal,email,password)values('$fname','$lname','$gender','$birthday', '$country','$postal', '$email1', '$password')";
+$active =md5($gender.$email.$fname);
+$sql="INSERT INTO user(fname,lname,gender,birthday,country,postal,email,password,Active)values('$fname','$lname','$gender','$birthday', '$country','$postal', '$email1', '$password','$active')";
 $result = mysql_query($sql);
 
 $email = new SendGrid\Email();
@@ -25,7 +26,7 @@ $email
     ->setFrom('register@movies.sj')
     ->setSubject('Sign Up')
     ->setText('Registration sucessfull')
-    ->setHtml('<strong>Welcome!</strong>')
+    ->setHtml('<strong>Welcome!<br>'.$register.'activate.php?id='.$active.'</strong>')
 ;
 $sendgrid->send($email);
 if($result){

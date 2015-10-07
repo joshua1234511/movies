@@ -3,7 +3,7 @@ include ("../Config/config.php");
 session_start();
 $username=$_POST['username'];
 $pass;
-$sql = "SELECT * FROM user WHERE email = '$username'";
+$sql = "SELECT * FROM user WHERE email = '$username' and Active ='1'";
 $result = mysql_query($sql);
 if (mysql_num_rows($result) !== 0){  
 while ($row = mysql_fetch_assoc($result)) {
