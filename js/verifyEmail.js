@@ -1,33 +1,25 @@
 function verifyEmail(str)
 {
 var httpxml;
-try
-{
+try{
 httpxml=new XMLHttpRequest();
 }
-catch (e)
-{
-try
-{
+catch (e){
+try{
 httpxml=new ActiveXObject("Msxml2.XMLHTTP");
 }
-catch (e)
-{
-try
-{
+catch (e){
+try{
 httpxml=new ActiveXObject("Microsoft.XMLHTTP");
 }
-catch (e)
-{
+catch (e){
 alert("Your browser does not support AJAX!");
 return false;
 }
 }
 }
-function stateChanged() 
-{
-if(httpxml.readyState==4)
-{
+function stateChanged() {
+if(httpxml.readyState==4){
 var goodColor = "#66cc66";
 var badColor = "#ff6666";
 if(httpxml.responseText === 'Email Valid'){
@@ -38,7 +30,6 @@ else{
 document.getElementById("email").style.backgroundColor = badColor;
 document.getElementById("email_label").style.color = badColor;
 }
-
 document.getElementById("email_label").innerHTML=httpxml.responseText;
 document.getElementById("msg").style.display='none';
 }

@@ -5,9 +5,6 @@ if(!isset($_SESSION['username']) && empty($_SESSION['username'])) {
   header('Location: '.$login);
 }
 ?>
-<!DOCTYPE html>
-<html>
-<head>
 <?php
 $id=$_POST['id'];
 if($id){
@@ -27,53 +24,27 @@ $year = $row["year"];
 $poster = $row["poster"]; 
 }
 }
-mysql_close($link);   
+   
 }
-else{
-header('Location: '.$site); 
+
+$sql = mysql_query("select location_id from movies_running where movies_id= $id ");
+$userinfo = array();
+
+while ($row_user = mysql_fetch_assoc($sql)){
+    $userinfo[] = $row_user['location_id'];
 }
 ?>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<meta charset="utf-8"/>
-<title>Movies</title>
-<link rel="stylesheet" href="../css/styles.css" type="text/css" />
-<!--[if lt IE 9]>
-<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-<![endif]-->
-<script type="text/javascript" src="../js/functions.js"></script>
-<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
-</head>
-<body>
-<section id="body" class="width">
-<header>
-<h1><a href="#">Movies</a></h1>
-<h2>“<i>It's funny how the colors of the real world only seem really real when you watch them on a screen.</i>”</h2>
-<?php
-session_start();
-if(isset($_SESSION['username']) && !empty($_SESSION['username'])) { ?>
-  <label id="name"> Welcome <?php echo $_SESSION['username']?></label><a id="logout" href="<?php echo $logout ?>" >Logout</a>
-<?php }
-?>
-</header>
-<aside id="sidebar" class="column-left">
-<nav id="mainnav">
-<ul>
-<li class="selected-item"><a href="<?php echo $site ?>">Home</a></li>
-<li><a href="<?php echo $admin ?>">Admin</a></li>
-<li><a href="#">Subscribe</a></li>
-</ul>
-</nav>
-</aside>
+<?php include ("../Header/header.php"); ?>
 <section id="content" class="column-left">
 <article id="content_article"><center>
 <form action="<?php echo $site ?>Edit/" method="post" enctype="multipart/form-data">
 <table class="table-responsive">
 <tr>
-<td></td><td><input type="hidden" id="id" name="id" value="<?php echo $id ?>" readonly=""/></td>
+<td></td><td><input type="hidden" id="id" name="id" value="<?php echo $id ?>" readonly/></td>
 </tr>
 <tr>
 <td>Name</td>
-<td><input type="text" id="name"  name="name" required="" value="<?php echo $name ?>" maxlength="15"/></td>
+<td><input type="text" id="name"  name="name" required value="<?php echo $name ?>" maxlength="15"/></td>
 </tr>
 <tr>
 <td>Genre</td>
@@ -84,19 +55,36 @@ if(isset($_SESSION['username']) && !empty($_SESSION['username'])) { ?>
 </tr>
 <tr>
 <td>Rating:</td>
-<td>1<input id="rating" name="rating" type="radio" value="1"<?php if($rating ==='1'){?>checked=""<?php }?>/>&nbsp;
-2<input id="rating" name="rating" type="radio" value="2" <?php if($rating ==='2'){?>checked=""<?php }?>/>&nbsp;
-3<input id="rating" name="rating" type="radio" value="3" <?php if($rating ==='3'){?>checked=""<?php }?>/>&nbsp;
-4<input id="rating" name="rating" type="radio" value="4" <?php if($rating ==='4'){?>checked=""<?php }?>/>&nbsp;
-5<input id="rating" name="rating" type="radio" value="5" <?php if($rating ==='5'){?>checked=""<?php }?>/></td>
+<td>1<input id="rating" name="rating" type="radio" value="1"<?php if($rating ==='1'){?>checked<?php }?>/>&nbsp;
+2<input id="rating" name="rating" type="radio" value="2" <?php if($rating ==='2'){?>checked<?php }?>/>&nbsp;
+3<input id="rating" name="rating" type="radio" value="3" <?php if($rating ==='3'){?>checked<?php }?>/>&nbsp;
+4<input id="rating" name="rating" type="radio" value="4" <?php if($rating ==='4'){?>checked<?php }?>/>&nbsp;
+5<input id="rating" name="rating" type="radio" value="5" <?php if($rating ==='5'){?>checked<?php }?>/></td>
 </tr>
 <tr>
 <td>Year</td>
-<td><input id="year"  name="year" type="date" required=""  value="<?php echo $year ?>"/></td>
+<td><input id="year"  name="year" type="date" required  value="<?php echo $year ?>"/></td>
 </tr>
+
+<tr><td>Location</td><td> <select id="country" name="country[]" multiple>
+<?php $sql1 = "SELECT id, name FROM location";
+$result1 = mysql_query($sql1);
+if (mysql_num_rows($result1) !== 0){
+while ($row1 = mysql_fetch_assoc($result1)) {
+?>  
+<option value="<?php echo $row1['id']; ?>"   <?php if (in_array($row1['id'], $userinfo)){?>selected=""<?php }?>   > <?php echo $row1['name']; ?></option>
+<?php
+}
+}
+mysql_close($link);
+?>
+</select></td></tr>
+
+
+
 <tr>
 <td>Poster</td>
-<td><input type="file" required="" name="image" id="image"  accept="image/jpeg,image/png,image/gif" /></td>
+<td><input type="file" required name="image" id="image"  accept="image/jpeg" /></td>
 </tr>
 <tr>
 <?php
@@ -113,7 +101,4 @@ $ab =$a + $b;
 </article>
 </section>
 <?php include ("../Footer/footer.php"); ?>
-<div class="clear"></div>
-</section>
-</body>
-</html>
+

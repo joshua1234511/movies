@@ -1,8 +1,6 @@
 <?php
 include ("../Config/config.php");
 $id=$_POST["id"];
-echo $id;
-
 $sql = "SELECT poster as co FROM movies where id= $id LIMIT 1";
 $result = mysql_query($sql);
 if (mysql_num_rows($result) !== 0){  
@@ -20,5 +18,5 @@ header('Location: '.$site);
 }
 else {
 header('Location: '.$error); 
+
 }
-?>

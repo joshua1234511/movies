@@ -1,28 +1,39 @@
 <?php
-$hostname="localhost";
-$database="test";
-$username="root";
-$password="";
+define('DATABASE', 'test');
+define('HOSTNAME', 'localhost');
+define('USERNAME', 'root');
+define('PASSWORD', '');
 $site="http://movies.sj/";
-$admin="http://movies.sj/Admin/";
-$error="http://movies.sj/Error/";
-$display="http://movies.sj/Display/";
-$Subscribe="http://movies.sj/Subscribe/";
-$login="http://movies.sj/Login/";
-$logout="http://movies.sj/Login/logout.php";
-$register="http://movies.sj/Register/";
-$link = mysql_connect($hostname, $username, $password);
+$admin=$site."Admin/";
+$add=$site."Add/";
+$error=$site."Error/";
+$display=$site."Display/";
+$Subscribe=$site."Subscribe/";
+$login=$site."Login/";
+$logout=$site."Login/logout.php";
+$register=$site."Register/";
+$blog=$site."blog/";
+$slider=$site."Slider/";
+$displaySingle=$site."Display.php";
+$link = mysql_connect(HOSTNAME, USERNAME, PASSWORD);
 if (!$link) {
 die('Connection failed: ' . mysql_error());
 }
-$db_selected = mysql_select_db($database, $link);
+$db_selected = mysql_select_db(DATABASE, $link);
 if (!$db_selected) {
 die ('Can\'t select database: ' . mysql_error());
 }
 try {
-$dbo = new PDO('mysql:host=localhost;dbname='.$database, $username, $password);
+$dbo = new PDO('mysql:host='.HOSTNAME.';dbname='.DATABASE, USERNAME, PASSWORD);
 } catch (PDOException $e) {
 print "Error!: " . $e->getMessage() . "<br/>";
 die();
 }
-?>
+$sql = "SELECT MAX(id) as co FROM movies";
+$result = mysql_query($sql);
+$displaymax=0;
+if (mysql_num_rows($result) !== 0){  
+while ($row = mysql_fetch_assoc($result)) {
+$displaymax = $row['co'];
+}
+}
