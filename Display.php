@@ -64,11 +64,14 @@ function initMap(x) {
   if(!x){
 x=15;
   }
-
+if(x<=15) { y=11;}
+else if(x <=50){ y=10;}
+else if(x <=200){ y=9;}
+else { y=8;}
   var lati;
   var lon;
   var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 10
+    zoom: y
   });
 
 
@@ -197,7 +200,7 @@ Tweet</a>
 <a data-pin-do="buttonBookmark" null href="//www.pinterest.com/pin/create/button/" >
 <img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_gray_20.png" /></a>
 
-<div class="g-plusone" data-size="tall" data-annotation="inline" data-width="300" data-href="<?php echo $displaySingle ?>?id=<?php echo $row['id'] ?>"></div>
+<div class="g-plusone" data-size="tall" data-annotation="inline" data-width="300" data-href="https://plus.google.com/share?url=<?php echo $displaySingle ?>?id=<?php echo $row['id'] ?>"></div>
 
 <div class="fb-like" data-href="<?php echo $displaySingle ?>?id=<?php echo $row['id'] ?>" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
 

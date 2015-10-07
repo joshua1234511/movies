@@ -24,7 +24,7 @@ if (!$db_selected) {
 die ('Can\'t select database: ' . mysql_error());
 }
 try {
-$dbo = new PDO('mysql:host=localhost;dbname='.DATABASE, USERNAME, PASSWORD);
+$dbo = new PDO('mysql:host='.HOSTNAME.';dbname='.DATABASE, USERNAME, PASSWORD);
 } catch (PDOException $e) {
 print "Error!: " . $e->getMessage() . "<br/>";
 die();
