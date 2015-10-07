@@ -4,23 +4,20 @@ include ("Config/config.php");
 include ("Header/header.php"); ?>
 <section id="content" class="column-left">
 <div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.4";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-<script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US</script>
-<script async defer src="//assets.pinterest.com/js/pinit.js"></script>
-<script type="text/javascript">
-  (function() {
-    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-    po.src = 'https://apis.google.com/js/platform.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-  })();
+<script>
+window.fbAsyncInit = function() { FB.init({appId: '', status: true, cookie: true, xfbml: true}); };
+(function() { var e = document.createElement('script'); e.async = true; e.src = document.location.protocol + '//connect.facebook.net/en_US/all.js'; document.getElementById('fb-root').appendChild(e); }());
 </script>
+<script type="text/javascript">
+(function() { var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true; po.src = 'https://apis.google.com/js/plusone.js?onload=onLoadCallback'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s); })();
+</script>
+<script type="text/javascript">
+(function(d){ var f = d.getElementsByTagName('SCRIPT')[0], p = d.createElement('SCRIPT'); p.type = 'text/javascript'; p.async = true; p.src = '//platform.twitter.com/widgets.js'; f.parentNode.insertBefore(p, f); }(document));
+</script>
+<script type="text/javascript">
+(function(d){ var f = d.getElementsByTagName('SCRIPT')[0], p = d.createElement('SCRIPT'); p.type = 'text/javascript'; p.async = true; p.src = '//assets.pinterest.com/js/pinit.js'; f.parentNode.insertBefore(p, f); }(document));
+</script>
+<script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US</script>
 <script src="//maps.googleapis.com/maps/api/js?v=3.exp&sensor=true"></script>
 
 
@@ -49,6 +46,7 @@ z-index: 20;">
 </div>
 
 <?php
+$details = "Movie Name: ".$row['name']." Genre: ".$row['genre']." Rating: ".$row['rating']." Released Date: ".$row['year'];
 $loc=$row['address'];
 $sql1="select * from location where id =  $loc LIMIT 1";
 foreach ($dbo->query($sql1) as $row1) {
@@ -113,11 +111,6 @@ $sql11="select * from location where id =  $loc1 LIMIT 1";
 foreach ($dbo->query($sql11) as $row11) {
  ?>
 
-
-
-
-
-
 if(!!navigator.geolocation) {
         
           navigator.geolocation.getCurrentPosition(function(position) {
@@ -154,34 +147,15 @@ function distance(lat1, lon1, lat2, lon2, unit) {
   if (unit=="N") { dist = dist * 0.8684 }
   return dist
 }
-
-
-
-
-
-
-
-
-
-
-
 <?php }
 }
 ?>
-
-
- 
-  
 }
 var colors = ['red', 'blue', 'yellow', 'green'];
-
     </script>
     <script async defer
         src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true&libraries=visualization&callback=initMap">
     </script>
-
-
-
 <div style="height:50%;width:40%;
 position: absolute;
 left: 50%;
@@ -193,20 +167,13 @@ position: absolute;
 left: 50%;
 top:73%;
 z-index: 20;">
-	<a class="twitter-share-button" target="_blank" style="color: red;"
-  href="https://twitter.com/intent/tweet" >
-Tweet</a>
-<script type="IN/Share" data-url="<?php echo $displaySingle ?>?id=<?php echo $row['id'] ?>" data-counter="right"></script>
-<a data-pin-do="buttonBookmark" null href="//www.pinterest.com/pin/create/button/" >
-<img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_gray_20.png" /></a>
-
-<div class="g-plusone" data-size="tall" data-annotation="inline" data-width="300" data-href="https://plus.google.com/share?url=<?php echo $displaySingle ?>?id=<?php echo $row['id'] ?>"></div>
-
-<div class="fb-like" data-href="<?php echo $displaySingle ?>?id=<?php echo $row['id'] ?>" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
-
+<div class="fb-like" data-href="<?php echo $displaySingle ?>?id=<?php echo $row['id'] ?>" data-send="false" data-layout="box_count" data-show-faces="false"></div>
+  <a rel="nofollow" href="http://twitter.com/share" data-url="<?php echo $displaySingle ?>?id=<?php echo $row['id'] ?>" data-text="<?php echo $details ?>" data-count="vertical" class="twitter-share-button">Tweet</a>
+  <div class="g-plus" data-action="share" data-annotation="vertical-bubble" data-height="60" data-href="https://plus.google.com/share?url=<?php echo $displaySingle ?>?id=<?php echo $row['id'] ?>"></div>
+  <a class="pin" href="http://www.pinterest.com/pin/create/button/?url='<?php echo $displaySingle ?>?id=<?php echo $row['id'] ?>'&description=<?php echo $details ?>" data-pin-do="buttonPin" count-layout="vertical" data-pin-config="above">PinIt</a>
+    <script type="IN/Share" data-url="<?php echo $displaySingle ?>?id=<?php echo $row['id'] ?>" data-counter="right"></script>
 </div>
  <?php } ?>
-
 </article>
 </section>
 <?php include ("Footer/footer.php");
