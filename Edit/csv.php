@@ -8,7 +8,7 @@ $import="UPDATE movies SET name='$data[1]', genre='$data[2]', rating='$data[3]',
 else{
 $import="INSERT into movies(name,genre,rating,year) values('$data[1]','$data[2]','$data[3]','$data[4]')";
 }
-mysql_query($import) or die(header('Location: '.$error));
+$dbo->query($import) or die(header('Location: '.$error));
 }
 fclose($handle);
 mysql_close($link);

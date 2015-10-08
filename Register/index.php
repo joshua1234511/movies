@@ -15,12 +15,13 @@ include ("../Config/config.php");
 <tr><td>Birthday</td><td><input placeholder="Birthday" name="birthday" type="date" required=""/></td></tr>
 <tr><td>Country</td><td> <select id="country" name="country">
 <?php $sql = "SELECT id, nicename FROM country";
-$result = mysql_query($sql);
-if (mysql_num_rows($result) !== 0){
-while ($row = mysql_fetch_assoc($result)) {
+if ($row1 = $dbo->query($sql)) {
+if ($row1->rowCount() > 0) {
+  	foreach ($row1 as $row) {
 ?>  
 <option value="<?php echo $row['id']; ?>"><?php echo $row['nicename']; ?></option>
 <?php
+}
 }
 }
 ?>

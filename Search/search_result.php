@@ -62,8 +62,8 @@ $sql = "SELECT * FROM movies";
 else{
 $sql =" SELECT * FROM movies where name like '%$in%' OR year like '%$in%' OR id like '%$in%' "; 
 }
-$rs_result = mysql_query($sql); 
-$total_records = mysql_num_rows($rs_result); 
+$rs_result = $dbo->query($sql); 
+$total_records = $rs_result->rowCount(); 
 $total_pages = ceil($total_records / $limit)*1; 
 if($total_records!==0)
 {

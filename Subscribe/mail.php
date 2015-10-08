@@ -5,9 +5,9 @@ $sendgrid = new SendGrid('SG.bp-sgh7CSLWDlJVogJ-eDA.dKtyGpTiTmk7JOPR8p_YYFZTwdDR
 $sql = "SELECT email as co FROM email";
 $email = new SendGrid\Email();
 
-$result = mysql_query($sql);
-if (mysql_num_rows($result) !== 0){  
-while ($row = mysql_fetch_assoc($result)) {
+if ($row1 = $dbo->query($sql)) {
+if ($row1->rowCount() > 0) {
+  	foreach ($row1 as $row) {
 $to = $row['co'];
 $subject = "Movie Updates";
 $txt = "New Movie Released/Updated!";
@@ -19,7 +19,7 @@ $email
     ->setText('New Release')
     ->setHtml('<strong>New Movie Released This Week!</strong>')
 ;
-
+}
 }
 }
 $sendgrid->send($email);

@@ -5,13 +5,12 @@ include ("../Header/header.php"); ?>
 <article id="content_article">
 <br/>
 <?php
-
 $id=$_GET['id'];
 $sql = "select * from user where Active = '$id' LIMIT 1";
-$result = mysql_query($sql);
-if (mysql_num_rows($result) !== 0){
+$result = $dbo->query($sql);
+if ($result->rowCount() > 0){
 $sql1="UPDATE user SET Active='1' where Active='$id'";
-$result1 = mysql_query($sql1);
+$result1 = $dbo->query($sql1);
 }
 if($result1){
 

@@ -18,7 +18,7 @@ $email1=$_POST['email'];
 $password=md5($_POST['password']);
 $active =md5($gender.$email.$fname);
 $sql="INSERT INTO user(fname,lname,gender,birthday,country,postal,email,password,Active)values('$fname','$lname','$gender','$birthday', '$country','$postal', '$email1', '$password','$active')";
-$result = mysql_query($sql);
+$result = $dbo->query($sql);
 
 $email = new SendGrid\Email();
 $email

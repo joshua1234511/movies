@@ -9,14 +9,14 @@ if(!isset($_SESSION['username']) && empty($_SESSION['username'])) {
 $id=$_POST['id'];
 if($id){
 $sql = "SELECT * FROM movies where id = $id LIMIT 1";
-$result = mysql_query($sql);
 $name;
 $genre;
 $rating;
 $year;
 $poster;
-if (mysql_num_rows($result) !== 0) {
-while ($row = mysql_fetch_assoc($result)) {
+if ($row1 = $dbo->query($sql)) {
+if ($row1->rowCount() > 0) {
+  	foreach ($row1 as $row) {
 $name = $row["name"];
 $genre = $row["genre"];
 $rating = $row["rating"];
@@ -24,14 +24,20 @@ $year = $row["year"];
 $poster = $row["poster"]; 
 }
 }
+}
    
 }
 
-$sql = mysql_query("select location_id from movies_running where movies_id= $id ");
+$sql ="select location_id from movies_running where movies_id= $id ";
 $userinfo = array();
 
-while ($row_user = mysql_fetch_assoc($sql)){
+if ($row1 = $dbo->query($sql)) {
+if ($row1->rowCount() > 0) {
+  	foreach ($row1 as $row_user) {
+
     $userinfo[] = $row_user['location_id'];
+}
+}
 }
 ?>
 <?php include ("../Header/header.php"); ?>
@@ -68,12 +74,15 @@ while ($row_user = mysql_fetch_assoc($sql)){
 
 <tr><td>Location</td><td> <select id="country" name="country[]" multiple>
 <?php $sql1 = "SELECT id, name FROM location";
-$result1 = mysql_query($sql1);
-if (mysql_num_rows($result1) !== 0){
-while ($row1 = mysql_fetch_assoc($result1)) {
+
+if ($row = $dbo->query($sql1)) {
+if ($row->rowCount() > 0) {
+  	foreach ($row as $row1) {
+
 ?>  
 <option value="<?php echo $row1['id']; ?>"   <?php if (in_array($row1['id'], $userinfo)){?>selected=""<?php }?>   > <?php echo $row1['name']; ?></option>
 <?php
+}
 }
 }
 mysql_close($link);

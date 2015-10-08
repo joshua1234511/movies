@@ -33,14 +33,20 @@ include ("../Header/header.php"); ?>
 <td><input id="year"  name="year" type="date" required value="" /></td>
 </tr>
 
+
+
+
+
+
 <tr><td>Location</td><td> <select id="country" name="country[]" multiple>
 <?php $sql = "SELECT id, name FROM location";
-$result = mysql_query($sql);
-if (mysql_num_rows($result) !== 0){
-while ($row = mysql_fetch_assoc($result)) {
+if ($row1 = $dbo->query($sql)) {
+if ($row1->rowCount() > 0) {
+  	foreach ($row1 as $row) {
 ?>  
 <option value="<?php echo $row['id']; ?>"><?php echo $row['name']; ?></option>
 <?php
+}
 }
 }
 ?>

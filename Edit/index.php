@@ -2,10 +2,10 @@
 include ("../Config/config.php");
 $id=test_input($_POST['id']);
 $sql = "SELECT MAX(id) as co FROM movies";
-$result = mysql_query($sql);
+$result = $dbo->query($sql);
 $maxid=1;
-if (mysql_num_rows($result) !== 0){  
-while ($row = mysql_fetch_assoc($result)) {
+if ($result->rowCount() > 0) {
+  	foreach ($result as $row) {
 $maxid = $row['co'] + 1;
 }
 }
@@ -57,11 +57,11 @@ $actual_link = "http://.".$_SERVER[HTTP_HOST].$_SERVER[REQUEST_URI];
 $date = date_create();
 $errorlog="Insert on page :".$actual_link." Insert timeStamp: ".date_timestamp_get($date)." Insert :Insert operation done". "\n";
 file_put_contents($li, $errorlog, FILE_APPEND | LOCK_EX);
-$result = mysql_query($sql);
+$result = $dbo->query($sql);
 if($result){
 foreach($_POST['country'] as $k) {
     $sql_loc = "INSERT INTO movies_running(movies_id,location_id) values('$maxid','$k')";
-    mysql_query($sql_loc);
+    $dbo->query($sql_loc);
 }
 }
 }
@@ -72,13 +72,13 @@ $actual_link = "http://.".$_SERVER[HTTP_HOST].$_SERVER[REQUEST_URI];
 $date = date_create();
 $errorlog="Update on page :".$actual_link." Update timeStamp: ".date_timestamp_get($date)." Update operation done". "\n";
 file_put_contents($li, $errorlog, FILE_APPEND | LOCK_EX);
-$result = mysql_query($sql);
+$result =$dbo->query($sql);
 if($result){
 $sql_dec = "delete  from movies_running where movies_id = $id";
-    mysql_query($sql_dec);
+    $dbo->query($sql_dec);
 foreach($_POST['country'] as $k) {
     $sql_loc = "INSERT INTO movies_running(movies_id,location_id) values('$id','$k')";
-    mysql_query($sql_loc);
+    $dbo->query($sql_loc);
 }
 }
 } 

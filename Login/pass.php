@@ -4,11 +4,12 @@ session_start();
 $username=$_POST['username'];
 $pass;
 $sql = "SELECT * FROM user WHERE email = '$username' and Active ='1'";
-$result = mysql_query($sql);
-if (mysql_num_rows($result) !== 0){  
-while ($row = mysql_fetch_assoc($result)) {
+if ($row1 = $dbo->query($sql)) {
+if ($row1->rowCount() > 0) {
+  	foreach ($row1 as $row) {
 $pass = $row['password'];
 $username = $row['fname'].' '.$row['lname'];
+}
 }
 }
 $password=md5($_POST['password']);
