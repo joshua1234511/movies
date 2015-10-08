@@ -59,12 +59,12 @@ z-index: 21;">
 
 <?php
 $details = "Movie Name: ".$row['name']." Genre: ".$row['genre']." Rating: ".$row['rating']." Released Date: ".$row['year'];
-$loc=$row['address'];
-$sql1="select * from location where id =  $loc LIMIT 1";
-foreach ($dbo->query($sql1) as $row1) {
-$ln = $row1['ln'];
-$lt = $row1['lt'];
-}
+//$loc=$row['address'];
+//$sql1="select * from location where id =  $loc LIMIT 1";
+//foreach ($dbo->query($sql1) as $row1) {
+//$ln = $row1['ln'];
+//$lt = $row1['lt'];
+//}
 
 ?>
 <script>
