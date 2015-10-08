@@ -42,7 +42,19 @@ z-index: 20;">
   <p> Genre: <?php echo $row['genre'] ?></p>
    <p>Rating: <?php echo $row['rating'] ?></p>
    <p>Year: <?php echo $row['year'] ?></p>
-   Set Radius (Kms)<input type="number" onkeyup="initMap(this.value);" placeholder="15">
+   Set Radius (Kms)<input type="number" onkeyup="initMap(this.value);" placeholder="15" onchange="initMap(this.value);">
+</div>
+
+<div style="height:50%;width:40%;
+position: absolute;
+left: 87%;
+top:21%;
+z-index: 21;">
+
+<input type="range" name="grade" orient="vertical" step="50" value ="15" min="0" max="1000" onkeyup="initMap(this.value);" onchange="initMap(this.value);"
+  style="width: 20px; height: 100px;
+  -webkit-appearance: slider-vertical;
+  writing-mode: bt-lr;">
 </div>
 
 <?php
@@ -64,8 +76,12 @@ x=15;
   }
 if(x<=15) { y=11;}
 else if(x <=50){ y=10;}
-else if(x <=200){ y=9;}
-else { y=8;}
+else if(x <=100){ y=9;}
+else if(x <=150){ y=8;}
+else if(x <=200){ y=7;}
+else if(x <=250){ y=6;}
+else if(x <=500){ y=5;}
+else { y=4;}
   var lati;
   var lon;
   var map = new google.maps.Map(document.getElementById('map'), {
@@ -167,7 +183,7 @@ position: absolute;
 left: 50%;
 top:73%;
 z-index: 20;">
-<div class="fb-like" data-href="<?php echo $displaySingle ?>?id=<?php echo $row['id'] ?>" data-send="false" data-layout="box_count" data-show-faces="false"></div>
+<div style="display:inline;"  class="fb-like" data-href="<?php echo $displaySingle ?>?id=<?php echo $row['id'] ?>" data-send="false" data-layout="box_count" data-show-faces="false"></div>
   <a rel="nofollow" href="http://twitter.com/share" data-url="<?php echo $displaySingle ?>?id=<?php echo $row['id'] ?>" data-text="<?php echo $details ?>" data-count="vertical" class="twitter-share-button">Tweet</a>
   <div class="g-plus" data-action="share" data-annotation="vertical-bubble" data-height="60" data-href="https://plus.google.com/share?url=<?php echo $displaySingle ?>?id=<?php echo $row['id'] ?>"></div>
   <a class="pin" href="http://www.pinterest.com/pin/create/button/?url='<?php echo $displaySingle ?>?id=<?php echo $row['id'] ?>'&description=<?php echo $details ?>" data-pin-do="buttonPin" count-layout="vertical" data-pin-config="above">PinIt</a>
