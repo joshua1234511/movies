@@ -8,7 +8,6 @@
 <?php
 $actual_link = "http://".$_SERVER[HTTP_HOST].$_SERVER[REQUEST_URI];
 if($site === $actual_link){
-include ("Social/facebook_script.php");
 ?>
 <link rel="stylesheet" href="css/styles.css" type="text/css" />
 <script type="text/javascript" src="js/functions.js"></script>
@@ -17,7 +16,6 @@ include ("Social/facebook_script.php");
 <?php
 }
 else {
-include ("../Social/facebook_script.php");
 ?>
 <link rel="stylesheet" href="../css/styles.css" type="text/css" />
 <script type="text/javascript" src="../js/functions.js"></script>

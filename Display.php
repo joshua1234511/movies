@@ -42,7 +42,7 @@ z-index: 20;">
   <p> Genre: <?php echo $row['genre'] ?></p>
    <p>Rating: <?php echo $row['rating'] ?></p>
    <p>Year: <?php echo $row['year'] ?></p>
-   Set Radius (Kms)<input type="number" onkeyup="initMap(this.value);" placeholder="15" onchange="initMap(this.value);">
+   Set Radius (Kms)<input type="number" onkeyup="initMap(this.value);" placeholder="15" onchange="initMap(this.value);" style="width:4em;">
 </div>
 
 <div style="height:50%;width:40%;
