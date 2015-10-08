@@ -46,13 +46,19 @@ Enter Movie Details<br/><input placeholder="Name/ID/Year" name="movie" type="tex
 </form>
 <form id="myForm2">
 Size<br/><select name="size" onchange="search1(myForm1.movie.value,<?php echo $x ; ?>,this.value);" >
+<?php 
+if($site === $actual_link ) { ?>
 <option <?php if($limit === '3') {?> selected="selected"  <?php } ?> value="3">Default</option>
 <option <?php if($limit === '6') {?> selected="selected"  <?php } ?> value="6">6</option>
 <option <?php if($limit === '12') {?> selected="selected"  <?php } ?> value="12">12</option>
-<?php 
-if($site === $actual_link ) { ?>
 <option <?php if($limit === '18') {?> selected="selected"  <?php } ?> value="18">18</option>
-<?php } ?>
+<?php }
+else { ?>
+<option <?php if($limit === '3') {?> selected="selected"  <?php } ?> value="3">Default</option>
+<option <?php if($limit === '5') {?> selected="selected"  <?php } ?> value="5">5</option>
+<option <?php if($limit === '10') {?> selected="selected"  <?php } ?> value="10">10</option>
+
+<?php }?>
 </select>
 </form>
 <?php
