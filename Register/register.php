@@ -27,11 +27,12 @@ $email
     ->setText('Registration sucessfull')
     ->setHtml('<strong>Welcome!<br>'.$register.'activate.php?id='.$active.'</strong>')
 ;
-if($sendgrid->send($email)){
+try {
+    $sendgrid->send($email);
+} catch(\SendGrid\Exception $e) {
+   header('Location: '.$error); 
+   
 }
-        else {
-            header('Location: '.$error); 
-            }
 if($result){
 header('Location: '.$login); 
 }

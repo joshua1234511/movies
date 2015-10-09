@@ -37,3 +37,4 @@ Login on page :http://.movies.sj/Login/pass.php Login timeStamp: 1444306188 Logi
 Login on page :http://.movies.sj/Login/pass.php Login timeStamp: 1444362549 Login done:Joshua Fernandes
 Logout on page :http://.movies.sj/Login/logout.php Logout timeStamp: 1444365339 Logout done
 Login on page :http://.movies.sj/Login/pass.php Login timeStamp: 1444365600 Login done:Joshua Fernandes
+Logout on page :http://.movies.sj/Login/logout.php Logout timeStamp: 1444369653 Logout done

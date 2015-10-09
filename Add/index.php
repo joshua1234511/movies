@@ -5,6 +5,76 @@ if(!isset($_SESSION['username']) && empty($_SESSION['username'])) {
   header('Location: '.$login);
 }
 include ("../Header/header.php"); ?>
+
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+<script type="text/javascript">
+var geocoder = new google.maps.Geocoder();
+
+function geocodePosition(pos) {
+  geocoder.geocode({
+    latLng: pos
+  }, function(responses) {
+    if (responses && responses.length > 0) {
+      updateMarkerAddress(responses[0].formatted_address);
+    } else {
+      updateMarkerAddress('Cannot determine address at this location.');
+    }
+  });
+}
+
+function updateMarkerStatus(str) {
+  document.getElementById('markerStatus').innerHTML = str;
+}
+
+function updateMarkerPosition(latLng) {
+  document.getElementById('latbox').value=latLng.lat();
+  document.getElementById('lngbox').value=latLng.lng();
+}
+
+function updateMarkerAddress(str) {
+  document.getElementById('address').value = str;
+}
+var ln=15.2855;
+var lt=73.9867;
+function initialize() {
+  var latLng = new google.maps.LatLng(ln, lt);
+  var map = new google.maps.Map(document.getElementById('mapCanvas'), {
+    zoom: 11,
+    center: latLng,
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+  });
+  var marker = new google.maps.Marker({
+    position: latLng,
+    title: 'Point A',
+    map: map,
+    draggable: true
+  });
+  
+  // Update current position info.
+  updateMarkerPosition(latLng);
+  geocodePosition(latLng);
+  
+  // Add dragging event listeners.
+  google.maps.event.addListener(marker, 'dragstart', function() {
+    updateMarkerAddress('Dragging...');
+  });
+  
+  google.maps.event.addListener(marker, 'drag', function() {
+    updateMarkerStatus('Dragging...');
+    updateMarkerPosition(marker.getPosition());
+  });
+  
+  google.maps.event.addListener(marker, 'dragend', function() {
+    updateMarkerStatus('Drag ended');
+    geocodePosition(marker.getPosition());
+  });
+}
+
+// Onload handler to fire off the app.
+google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+
+
 <section id="content" class="column-left">
 <article id="content_article"><center>
 <form action="<?php echo $site ?>Edit/" method="post" enctype="multipart/form-data">
@@ -58,18 +128,34 @@ while ($row = mysql_fetch_assoc($result)) {
 <a href="javascript:void(0);" onclick="generate_captcha();" title="Refresh Captcha Image">Reload Image</a>
 </td><td><input type="submit" value="Submit" class="btn" onClick="return validate_captcha()" /></td></tr>
 </form>
-<tr><td><br/></td></tr><tr><td><br/></td></tr>
+<tr><td><br/></td></tr>
 <form action="<?php echo $site ?>Edit/csv.php" method="post" enctype="multipart/form-data">
-<tr><td>Csv Upload</td><td><input type="file" required name="filename" id="filename"  accept=".csv" /></td><td><input type="submit" value="Submit" class="btn" /></td></tr>
+<tr><td>Csv Upload</td><td><input type="file" required name="filename" id="filename"  accept=".csv" /></td>
+</tr>
+<tr><td></td><td><input type="submit" value="Submit" class="btn" /></td></tr>
 </form>
 </table>
 </center>
-<div style="height:50%;width:40%;
+<div style="height:40%;width:30%;
 position: absolute;
-left: 58%;
+left: 68%;
 top:20%;
-z-index: 20;" id="map">aaa
+z-index: 20;" id="mapCanvas">
 </div>
+<div  style="
+position: absolute;
+left: 68%;
+top:60%;
+z-index: 20;">
+<span id="markerStatus"></span><br/>
+<form method="post" action="location.php">
+    Address:<input size="20" type="text" id="address" name="address" ><br/>
+    Latitude: <input size="20" type="text" id="latbox" name="latbox" ><br/>
+    Longitude: <input size="20" type="text" id="lngbox" name="lngbox" ><br/>
+<input type="submit" value="Add Location">
+    </form>
+</div>
+
 </article>
 </section>
 <script type="text/javascript">
