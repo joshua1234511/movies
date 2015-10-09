@@ -64,6 +64,12 @@ while ($row = mysql_fetch_assoc($result)) {
 </form>
 </table>
 </center>
+<div style="height:50%;width:40%;
+position: absolute;
+left: 58%;
+top:20%;
+z-index: 20;" id="map">aaa
+</div>
 </article>
 </section>
 <script type="text/javascript">
