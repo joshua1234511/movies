@@ -21,7 +21,16 @@ $email
 }
 }
 
-if($sendgrid->send($email)){
+
+try {
+    $sendgrid->send($email);
+} catch(\SendGrid\Exception $e) {
+   header('Location: '.$error); 
+   
+}
+
+
+if($result){
 	echo "<script>window.close();</script>";
 }
 else{
