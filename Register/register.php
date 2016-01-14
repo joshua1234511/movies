@@ -1,7 +1,7 @@
 <?php
 include ("../Config/config.php");
 require("../sendgrid-php/sendgrid-php.php");
-$sendgrid = new SendGrid('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');
+$sendgrid = new SendGrid('');
 function test_input($data) {
 $data = trim($data);
 $data = stripslashes($data);
